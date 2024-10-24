@@ -1,0 +1,85 @@
+@model Cliente
+@{
+  ViewData["Title"] = "Adicionar";
+}
+<h1>Novo cliente</h1>
+<h4>Preencha os campos abaixo</h4>
+<hr />
+<br />
+<div class="row">
+  <div class="col-md">
+    <form asp-controller="Cliente" asp-action="Criar" method="post">
+      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+      <div class="card">
+        <div class="card-header">Informações pessoais</div>
+        <div class="card-body row">
+          <div class="form-group col-md">
+            <label asp-for="Nome" class="control-label"></label>
+            <input asp-for="Nome" class="form-control" />
+            <span asp-validation-for="Nome" class="text-danger"></span>
+          </div>
+          <div class="form-group col-md">
+            <label asp-for="Cpf" class="control-label"></label>
+            <input asp-for="Cpf" class="form-control" />
+            <span asp-validation-for="Cpf" class="text-danger"></span>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="card">
+        <div class="card-header">Endereço</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="form-group col-md">
+              <label asp-for="Endereco" class="control-label"></label>
+              <input asp-for="Endereco" class="form-control" />
+              <span asp-validation-for="Endereco" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md">
+              <label asp-for="Cidade" class="control-label"></label>
+              <input asp-for="Cidade" class="form-control" />
+              <span asp-validation-for="Cidade" class="text-danger"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md">
+              <label asp-for="Bairro" class="control-label"></label>
+              <input asp-for="Bairro" class="form-control" />
+              <span asp-validation-for="Bairro" class="text-danger"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md">
+              <label asp-for="Numero" class="control-label"></label>
+              <input asp-for="Numero" class="form-control" />
+              <span asp-validation-for="Numero" class="text-danger"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="card">
+        <div class="card-header">Contato</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="form-group col-md">
+              <label asp-for="Celular" class="control-label"></label>
+              <input asp-for="Celular" class="form-control" />
+              <span asp-validation-for="Celular" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md">
+              <label asp-for="TelFixo" class="control-label"></label>
+              <input asp-for="TelFixo" class="form-control" />
+              <span asp-validation-for="TelFixo" class="text-danger"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="form-group">
+        <button type="submit" class="btn btn-success">Adicionar</button>
+        <a class="btn btn-secondary" asp-controller="Cliente" asp asp-action="Index">Voltar</a>
+      </div>
+    </form>
+  </div>
+</div>

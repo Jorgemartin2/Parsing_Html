@@ -1,0 +1,55 @@
+@model List<Cliente>
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<div class="text-center">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary" role="button" asp-controller="Cliente" asp-action="Adicionar">Adicionar novo
+            cliente</a>
+    </div>
+    <br>
+    <h1 class="display-4">Listagem de clientes</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Endereço</th>
+                <th scope="col">Número</th>
+                <th scope="col">Bairro</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">Celular</th>
+                <th scope="col">Telefone Fixo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (Cliente clientes in Model)
+                {
+                    <tr>
+                        <th scope="row">@clientes.Id</th>
+                        <td>@clientes.Nome</td>
+                        <td>@clientes.Cpf</td>
+                        <td>@clientes.Endereco</td>
+                        <td>@clientes.Numero</td>
+                        <td>@clientes.Bairro</td>
+                        <td>@clientes.Cidade</td>
+                        <td>@clientes.Celular</td>
+                        <td>@clientes.TelFixo</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                <a role="button" class="btn btn-danger" asp-route-id="@clientes.Id" asp-controller="Cliente"
+                                    asp-action="ApagarConfirmacao">Apagar</a>
+                                <a role="button" class="btn btn-warning" asp-route-id="@clientes.Id" asp-controller="Cliente"  asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-primary">Ver Livros</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
