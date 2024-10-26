@@ -2,9 +2,11 @@
 @{
   ViewData["Title"] = "Adicionar";
 }
-<h1>Novo cliente</h1>
 <h4>Preencha os campos abaixo</h4>
 <hr />
+<div>
+  <a class="btn btn-secondary" asp-controller="Cliente" asp asp-action="Index">Voltar</a>
+</div>
 <br />
 <div class="row">
   <div class="col-md">
@@ -78,7 +80,6 @@
       <br />
       <div class="form-group">
         <button type="submit" class="btn btn-success">Adicionar</button>
-        <a class="btn btn-secondary" asp-controller="Cliente" asp asp-action="Index">Voltar</a>
       </div>
     </form>
   </div>

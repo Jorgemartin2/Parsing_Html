@@ -1,0 +1,60 @@
+@model List<Livro>
+@{
+    ViewData["Title"] = "Livros";
+}
+<h4>Livros</h4>
+<hr>
+<p>
+    <a class="btn btn-primary" asp-controller="Livro" asp-action="Adicionar"> <i class="fa fa-plus-circle"></i> Novo
+        Livro</a>
+    <a class="btn btn-secondary" asp-controller="Cliente" asp asp-action="Index">Voltar</a>
+</p>
+<div class="text-center">
+    <br>
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="close">x</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="close">x</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+    <br>
+    <table class="table table-hover" id="table-client">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Editora</th>
+                <th scope="col">Ano Publicação</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (Livro livros in Model)
+                {
+                    <tr>
+                        <td>@livros.Nome</td>
+                        <td>@livros.Autor</td>
+                        <td>@livros.Editora</td>
+                        <td>@livros.AnoPublicacao.Year</td>
+                        <td>
+                            <a role="button" class="btn btn-warning" asp-route-id="@livros.Id" asp-controller="Livro"
+                                asp-action="Editar">Editar</a>
+                            <a role="button" class="btn btn-danger" asp-route-id="@livros.Id" asp-controller="Livro"
+                                asp-action="ApagarConfirmacao">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

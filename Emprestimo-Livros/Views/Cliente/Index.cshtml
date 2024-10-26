@@ -2,26 +2,37 @@
 @{
     ViewData["Title"] = "Clientes";
 }
-
+<h4>Clientes</h4>
+<hr />
+<a class="btn btn-primary" role="button" asp-controller="Cliente" asp-action="Adicionar">Novo usuário</a>
+<a class="btn btn-secondary" asp-controller="Home" asp asp-action="Index">Voltar</a>
 <div class="text-center">
     <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <a class="btn btn-primary" role="button" asp-controller="Cliente" asp-action="Adicionar">Adicionar novo
-            cliente</a>
     </div>
     <br>
-    <h1 class="display-4">Listagem de clientes</h1>
-    <table class="table table-hover">
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="close">x</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" aria-label="close">x</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+    <br>
+    <table class="table table-hover" id="table-client">
         <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">CPF</th>
-                <th scope="col">Endereço</th>
-                <th scope="col">Número</th>
-                <th scope="col">Bairro</th>
-                <th scope="col">Cidade</th>
                 <th scope="col">Celular</th>
                 <th scope="col">Telefone Fixo</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -30,22 +41,17 @@
                 foreach (Cliente clientes in Model)
                 {
                     <tr>
-                        <th scope="row">@clientes.Id</th>
                         <td>@clientes.Nome</td>
                         <td>@clientes.Cpf</td>
-                        <td>@clientes.Endereco</td>
-                        <td>@clientes.Numero</td>
-                        <td>@clientes.Bairro</td>
-                        <td>@clientes.Cidade</td>
                         <td>@clientes.Celular</td>
                         <td>@clientes.TelFixo</td>
                         <td>
-                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                <a role="button" class="btn btn-danger" asp-route-id="@clientes.Id" asp-controller="Cliente"
-                                    asp-action="ApagarConfirmacao">Apagar</a>
-                                <a role="button" class="btn btn-warning" asp-route-id="@clientes.Id" asp-controller="Cliente"  asp-action="Editar">Editar</a>
-                                <a role="button" class="btn btn-primary">Ver Livros</a>
-                            </div>
+                            <a role="button" class="btn btn-primary m-1" asp-route-id="@clientes.Id" asp-controller="Livro"
+                                asp-action="Index">Livros</a>
+                            <a role="button" class="btn btn-success m-1" asp-controller="Cliente" asp-action="Detalhes"
+                                asp-route-id="@clientes.Id">Detalhes</a>
+                            <a role="button" class="btn btn-danger m-1" asp-route-id="@clientes.Id" asp-controller="Cliente"
+                                asp-action="ApagarConfirmacao">Excluir</a>
                         </td>
                     </tr>
                 }

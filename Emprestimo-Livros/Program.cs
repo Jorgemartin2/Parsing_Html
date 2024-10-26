@@ -13,6 +13,7 @@ var connectionString = builder.Configuration.GetConnectionString("Database") ?? 
 builder.Services.AddDbContext<SystemDbContext>(options =>
     options.UseSqlite(connectionString));
 builder.Services.AddScoped<IRepositoryCliente, RepositoryCliente>();
+builder.Services.AddScoped<IRepositoryLivro, RepositoryLivro>();
 
 var app = builder.Build();
 

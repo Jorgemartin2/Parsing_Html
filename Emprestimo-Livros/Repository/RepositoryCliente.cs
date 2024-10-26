@@ -21,7 +21,6 @@ namespace Emprestimo_Livros.Repository
         }
         public Cliente Adicionar(Cliente cliente)
         {
-            //gravar no banco
             _bancoContext.Cliente.Add(cliente);
             _bancoContext.SaveChanges();
             return cliente;
@@ -29,7 +28,7 @@ namespace Emprestimo_Livros.Repository
         public Cliente Atualizar(Cliente cliente)
         {
             Cliente clienteDb = BuscarPorId(cliente.Id);
-            if (clienteDb == null) throw new System.Exception("Houve um erro na atualização do cliente");
+            if (clienteDb == null) throw new Exception("Houve um erro na atualização do cliente.");
             clienteDb.Nome = cliente.Nome;
             clienteDb.Cpf = cliente.Cpf;
             clienteDb.Endereco = cliente.Endereco;
@@ -41,6 +40,14 @@ namespace Emprestimo_Livros.Repository
             _bancoContext.Cliente.Update(clienteDb);
             _bancoContext.SaveChanges();
             return clienteDb;
+        }
+        public bool Apagar(int id)
+        {
+            Cliente clienteDb = BuscarPorId(id);
+            if (clienteDb == null) throw new System.Exception("Houve um erro na deleção do cliente");
+            _bancoContext.Cliente.Remove(clienteDb);
+            _bancoContext.SaveChanges();
+            return true;
         }
     }
 }

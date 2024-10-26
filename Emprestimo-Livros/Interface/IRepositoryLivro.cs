@@ -6,12 +6,12 @@ using Emprestimo_Livros.Models;
 
 namespace Emprestimo_Livros.Interface
 {
-    public interface IRepositoryCliente
+    public interface IRepositoryLivro
     {
-        List<Cliente> BuscarClientes();
-        Cliente BuscarPorId(int id);
-        Cliente Adicionar(Cliente cliente);
-        Cliente Atualizar(Cliente cliente);
+        List<Livro> BuscarLivros();
+        Livro Adicionar(Livro livro);
+        Livro BuscarPorId(int id);
+        Livro Atualizar(Livro livro);
         bool Apagar(int id);
     }
 }
