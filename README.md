@@ -1,4 +1,15 @@
-When we know the target as an argument, the script returns the hosts
-found and then resolve the domain bringing us the IP address of the host.<br>
-Using : ./parsing_script.sh domain<br>
-Example : ./parsing_script.sh google.com
+# Parsing Script
+
+Este projeto é um script em shell que realiza a resolução de domínios. Quando fornecido um domínio como argumento, o script encontra os hosts relacionados e resolve seus endereços IP.
+
+## 🔧 Como funciona
+
+Ao executar o script com um domínio como argumento, ele:
+
+1. Identifica os hosts relacionados ao domínio.
+2. Resolve os domínios encontrados para obter seus respectivos endereços IP.
+
+## 📦 Uso
+
+```bash
+./parsing_script.sh <domínio>
